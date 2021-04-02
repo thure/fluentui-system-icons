@@ -14,7 +14,13 @@
     "rename": "renamer --find ic_fluent_ ./icons/*",
     "optimize": "svgo --folder=./icons --precision=2 --disable=removeViewBox,mergePaths",
     "unfill": "node unfill.js --path=./icons/",
-    "build": "npm run copy && npm run rename && npm run optimize && npm run unfill"
+    "unfillUbuntu": "find ./icons -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"none\"/class=\"fluent_system_icon\"/g' {} \\; && find ./icons -type f -name \"*.bak\" -delete",
+    "fillPrimary": "find ./icons -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"#212121\"/style=\"{fill_primary}\"/g' {} \\; && find ./icons -type f -name \"*.bak\" -delete",
+    "fillSecondary": "find ./icons -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"#6E6E6E\"/style=\"{fill_secondary}\"/g' {} \\; && find ./icons -type f -name \"*.bak\" -delete",
+    "fillTertiary": "find ./icons -type f -name \"*.svg\" -exec sed -i.bak 's/fill=\"#ACACAC\"/style=\"{fill_tertiary}\"/g' {} \\; && find ./icons -type f -name \"*.bak\" -delete",
+    "build": "npm run copy && npm run rename && npm run optimize && npm run unfill",
+    "buildColor": "npm run copy && npm run rename && npm run optimize && npm run unfillUbuntu && npm run fillPrimary && npm run fillSecondary && npm run fillTertiary",
+    "testColor": "npm run unfillUbuntu && npm run fillPrimary && npm run fillSecondary && npm run fillTertiary"
   },
   "devDependencies": {
     "renamer": "^2.0.1",
