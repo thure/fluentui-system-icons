@@ -21,7 +21,7 @@
     "clean": "shx rm -rf ./icons ./sprites",
     "copy": "node ../../importer/generate.js --source=../../assets --dest=./icons --extension=svg",
     "rename": "renamer --find ic_fluent_ './icons/*'",
-    "optimize": "svgo --config svgo.config.yaml --folder=./icons",
+    "optimize": "svgo --config svgo.config.js --folder=./icons",
     "unfill": "node unfill.js --path=./icons/",
     "sprites": "mkdir ./sprites && for i in ./icons/*.svg; do svgstore -o \"./sprites/$(basename $i .svg).sprite.svg\" \"$i\"; done",
     "prebundle": "npm run copy && npm run rename && npm run unfill && npm run optimize",
