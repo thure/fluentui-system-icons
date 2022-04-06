@@ -1,4 +1,4 @@
 plugins:
-  - removeViewBox: false
-  - mergePaths: false
-  - precision: 2
+  removeViewBox: false
+  mergePaths: false
+  precision: 2
